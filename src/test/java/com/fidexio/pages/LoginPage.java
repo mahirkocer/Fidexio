@@ -10,7 +10,7 @@ public class LoginPage {
 
     public LoginPage() {
 
-        PageFactory.initElements(Driver.getDriver(),this);
+        PageFactory.initElements(Driver.getDriver(), this);
     }
 
     @FindBy(id = "login")
@@ -22,5 +22,6 @@ public class LoginPage {
     @FindBy(xpath = "//button[.='Log in']")
     public WebElement loginButton;
 
-
+    @FindBy(xpath= "//p[@class='alert alert-danger']")
+    public WebElement alertMessage;
 }

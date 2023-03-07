@@ -7,7 +7,10 @@ import com.fidexio.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
 
 public class Login_Step_Definitions {
     LoginPage login = new LoginPage();
@@ -40,4 +43,18 @@ public class Login_Step_Definitions {
         BrowserUtils.verifyTitle("#Inbox - Odoo");
     }
 
+
+    @When("user enters invalid {string} or invalid {string}")
+    public void userEntersInvalidOrInvalid(String username, String password) {
+        login.inputUsername.sendKeys(username);
+        login.inputPassword.sendKeys(password);
+    }
+
+
+    @Then("Wrong login password message should be displayed")
+    public void wrongLoginPasswordMessageShouldBeDisplayed() {
+        Assert.assertTrue(login.alertMessage.isDisplayed());
+        Assert.assertEquals("Wrong login/password",login.alertMessage.getText());
+
+    }
 }
