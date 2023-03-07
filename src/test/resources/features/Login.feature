@@ -4,7 +4,7 @@ Feature: Login Functionality
 
   Scenario Outline: Users can log in with valid credentials as Pos Manager
 
-    Given user goes to login page
+    Given user opens a browser and goes to login page
     When user enters valid "<username>" into username input box
     And user enters valid password into "posmanager" password input box
     And user clicks Log in button
@@ -16,6 +16,5 @@ Feature: Login Functionality
       | posmanager80@info.com  |
       | posmanager22@info.com  |
       | posmanager100@info.com |
-      | posmanager11info.com   |
       | posmanager65@info.com  |
       | posmanager33@info.com  |
