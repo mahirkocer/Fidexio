@@ -18,3 +18,22 @@ Feature: Login Functionality
       | posmanager100@info.com |
       | posmanager65@info.com  |
       | posmanager33@info.com  |
+
+
+
+  Scenario Outline: Users can log in with valid credentials as Sales Manager
+
+    Given user opens a browser and goes to login page
+    When user enters valid "<username>" into username input box
+    And user enters valid password into "salesmanager" password input box
+    And user clicks Log in button
+    Then user land on the home page
+
+    Examples:
+      | username               |
+      | posmanager15@info.com  |
+      | posmanager80@info.com  |
+      | posmanager22@info.com  |
+      | posmanager100@info.com |
+      | posmanager65@info.com  |
+      | posmanager33@info.com  |
