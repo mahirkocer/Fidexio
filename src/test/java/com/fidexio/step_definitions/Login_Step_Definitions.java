@@ -10,9 +10,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.List;
 
 public class Login_Step_Definitions {
     LoginPage login = new LoginPage();
@@ -55,7 +52,7 @@ public class Login_Step_Definitions {
     @Then("Wrong login password message should be displayed")
     public void wrongLoginPasswordMessageShouldBeDisplayed() {
         Assert.assertTrue(login.wrongAlertMessage.isDisplayed());
-        Assert.assertEquals("Wrong login/password",login.wrongAlertMessage.getText());
+        Assert.assertEquals("Wrong login/password", login.wrongAlertMessage.getText());
 
     }
 
@@ -68,7 +65,8 @@ public class Login_Step_Definitions {
 
     @Then("Please fill out this field message should be displayed")
     public void pleaseFillOutThisFieldMessageShouldBeDisplayed() {
-
+        login.inputUsername.getAttribute("validationMessage");
+        login.inputPassword.getAttribute("validationMessage");
 
     }
 
