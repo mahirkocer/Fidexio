@@ -1,13 +1,13 @@
 package com.fidexio.step_definitions;
 
 import com.fidexio.pages.LoginPage;
+
+
 import com.fidexio.utilities.BrowserUtils;
 import com.fidexio.utilities.ConfigurationReader;
 import com.fidexio.utilities.Driver;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import io.cucumber.java.en.*;
+
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 
@@ -78,5 +78,10 @@ public class Login_Step_Definitions {
     @And("user clicks on the enter key on keyboard")
     public void userClicksOnTheEnterKeyOnKeyboard() {
         login.inputPassword.sendKeys(Keys.ENTER);
+    }
+
+    @Then("user should see password in bullet signs")
+    public void userShouldSeePasswordInBulletSigns() {
+        Assert.assertTrue(login.inputPassword.getAttribute("type").equals("password"));
     }
 }
