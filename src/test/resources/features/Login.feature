@@ -1,8 +1,10 @@
+
+@FIX10-254
 Feature: Login Functionality
 
   User Story : As a user, I should be able to log in so that I can land on homepage.
 
-  Scenario Outline: Users can log in with valid credentials as Pos Manager
+  Scenario Outline: Verify users can log in with valid credentials as Pos Manager
 
     Given user opens a browser and goes to login page
     When user enters valid "<username>" into username input box
@@ -20,11 +22,10 @@ Feature: Login Functionality
 
 
 
-  Scenario Outline: Users can log in with valid credentials as Sales Manager
+  Scenario Outline: Verify users can log in with valid credentials as Sales Manager
 
     Given user opens a browser and goes to login page
     When user enters valid "<username>" into username input box
-
     And user enters valid password into "salesmanager" password input box
     And user clicks Log in button
     Then user land on the home page
@@ -38,7 +39,7 @@ Feature: Login Functionality
       | salesmanager65@info.com  |
 
   @wip
-  Scenario Outline: "Wrong login/password" should be displayed for invalid credentials
+  Scenario Outline: Verify 'Wrong login/password' should be displayed for invalid credentials
 
     Given user opens a browser and goes to login page
     When user enters invalid "<username>" or invalid "<password>"
@@ -52,3 +53,28 @@ Feature: Login Functionality
       | teacher22@info.com       | salesmanager  |
       | posmanager100@info.com   | manager100    |
       | devmanager65@info.com    | devmanager    |
+
+  Scenario Outline: Verify 'Please fill out this field' is displayed for empty credentials
+
+    Given user opens a browser and goes to login page
+    When user does not enter "<username>" or "<password>"
+    And user clicks Log in button
+    Then Please fill out this field message should be displayed
+
+    Examples:
+      | username                 | password   |
+      | salesmanager15@gmail.com |            |
+      |                          | posmanager |
+      |                          |            |
+
+
+  Scenario Outline: Verify the 'Enter' key works correctly on the login page
+    Given user opens a browser and goes to login page
+    When user enters valid "<username>" into username input box
+    And user enters valid "<password>" password input box
+    And user clicks on the enter key on keyboard
+    Then user land on the home page
+    Examples:
+      | username                | password     |
+      | posmanager10@info.com   | posmanager   |
+      | salesmanager10@info.com | salesmanager |
