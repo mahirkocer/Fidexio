@@ -4,10 +4,12 @@ import com.fidexio.pages.LoginPage;
 import com.fidexio.utilities.BrowserUtils;
 import com.fidexio.utilities.ConfigurationReader;
 import com.fidexio.utilities.Driver;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
@@ -39,7 +41,6 @@ public class Login_Step_Definitions {
 
     @Then("user land on the home page")
     public void user_land_on_the_home_page() {
-        System.out.println(Driver.getDriver().getTitle());
         BrowserUtils.verifyTitle("#Inbox - Odoo");
     }
 
@@ -53,8 +54,31 @@ public class Login_Step_Definitions {
 
     @Then("Wrong login password message should be displayed")
     public void wrongLoginPasswordMessageShouldBeDisplayed() {
-        Assert.assertTrue(login.alertMessage.isDisplayed());
-        Assert.assertEquals("Wrong login/password",login.alertMessage.getText());
+        Assert.assertTrue(login.wrongAlertMessage.isDisplayed());
+        Assert.assertEquals("Wrong login/password",login.wrongAlertMessage.getText());
 
+    }
+
+    @When("user does not enter {string} or {string}")
+    public void userDoesNotEnterOr(String username, String password) {
+        login.inputUsername.sendKeys(username);
+        login.inputPassword.sendKeys(password);
+
+    }
+
+    @Then("Please fill out this field message should be displayed")
+    public void pleaseFillOutThisFieldMessageShouldBeDisplayed() {
+
+
+    }
+
+    @And("user enters valid {string} password input box")
+    public void userEntersValidPasswordInputBox(String password) {
+        login.inputPassword.sendKeys(password);
+    }
+
+    @And("user clicks on the enter key on keyboard")
+    public void userClicksOnTheEnterKeyOnKeyboard() {
+        login.inputPassword.sendKeys(Keys.ENTER);
     }
 }

@@ -23,5 +23,5 @@ public class LoginPage {
     public WebElement loginButton;
 
     @FindBy(xpath= "//p[@class='alert alert-danger']")
-    public WebElement alertMessage;
+    public WebElement wrongAlertMessage;
 }
