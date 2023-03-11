@@ -12,6 +12,7 @@ public class LoginPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
+
     @FindBy(id = "login")
     public WebElement inputUsername;
 
@@ -21,8 +22,13 @@ public class LoginPage {
     @FindBy(xpath = "//button[.='Log in']")
     public WebElement loginButton;
 
-    @FindBy(xpath= "//p[@class='alert alert-danger']")
+    @FindBy(xpath = "//p[@class='alert alert-danger']")
     public WebElement wrongAlertMessage;
 
+    public void loginMethod() {
+        inputUsername.sendKeys(ConfigurationReader.getProperty("username"));
+        inputPassword.sendKeys(ConfigurationReader.getProperty("password"));
+        loginButton.click();
+    }
 
 }

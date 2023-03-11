@@ -16,11 +16,7 @@ public class Logout_StepDefinitions {
     LoginPage loginPage = new LoginPage();
     @Given("user logs in and on the home page")
     public void userLogsInAndOnTheHomePage() {
-            loginPage.inputUsername.sendKeys(ConfigurationReader.getProperty("username"));
-            loginPage.inputPassword.sendKeys(ConfigurationReader.getProperty("password"));
-            loginPage.loginButton.click();
-
-
+        loginPage.loginMethod();
     }
 
     @When("User clicks profile name")
